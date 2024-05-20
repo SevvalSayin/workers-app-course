@@ -1,4 +1,4 @@
-import { useState, Fragment, useRef } from "react";
+import { useState, Fragment, useRef, useEffect } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
@@ -7,6 +7,9 @@ const AddWorker = (props) => {
   const [error, setError] = useState();
   const nameInputRef = useRef();
   const wageInputRef = useRef();
+/*   useEffect(()=>{
+
+  },[]) */
 
   const minimumWage = 5000;
 
@@ -47,7 +50,7 @@ const enteredWage=wageInputRef.current.value;
   };
   return (
     <Fragment>
-      {error && <ErrorModal onConfirm={errorHandler} error={error} />}
+      {error && <ErrorModal setWorkers={props.setWorkers} onConfirm={errorHandler} error={error} />}
       <Card className="mt-10">
         <form className="flex flex-col gap-y-2" onSubmit={addWorkerHandler}>
           <label htmlFor="name" className="font-medium">
